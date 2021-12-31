@@ -1,4 +1,5 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
+import 'package:interactivesso_datatypes/src/User/permission.dart';
 import 'package:interactivesso_datatypes/src/Util/phone_number_serialization.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
@@ -10,7 +11,7 @@ class AccountStatus implements Serializable<int>{
   final bool canModifyAccount;
   final bool canViewManagingAPPs;
   final bool canModifyManagingAPPs;
-
+  
   @override
   int serialize([String? locale]){
     if(this == NORMAL){
@@ -62,7 +63,7 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
 
   @JsonKey(required: true, name: 'createTime')
   final int createTimeGMT;
-  
+
   @override
   Map<String, dynamic> serialize([String? locale]) => _$AccountCreateInfoToJson(this);
 
@@ -78,6 +79,9 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
 
 @JsonSerializable()
 class UserInfo implements Serializable<Map<String,dynamic>>{
+  @JsonKey(required: true, name: 'belongedGroup')
+  String belongedGroupId;
+
   @JsonKey(required: true, name: 'username')
   String username;
 
@@ -115,6 +119,9 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name:'accountCreateInfo', fromJson: AccountCreateInfo.fromJson, toJson: Serializable.convertToDynamicSerialized)
   AccountCreateInfo accountCreateInfo;
 
+  @JsonKey(required: true, name:'permission')
+  UserPermissionInfo permissionOverride;
+
   @JsonKey(ignore: true)
   String get displayName => nickname ?? username;
 
@@ -122,10 +129,12 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   Map<String, dynamic> serialize([String? locale]) => _$UserInfoToJson(this);
 
   UserInfo({
+    required this.belongedGroupId,
     required this.username, 
     this.email, 
     this.phoneNumber, 
     required this.accountCreateInfo,
+    required this.permissionOverride,
     this.passwordHash,
     this.accountStatus = AccountStatus.NORMAL, 
     this.emailVerified = false,

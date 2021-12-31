@@ -27,20 +27,25 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     requiredKeys: const [
+      'belongedGroup',
       'username',
       'emailVerified',
       'phoneVerified',
       'accountStatus',
-      'accountCreateInfo'
+      'accountCreateInfo',
+      'permission'
     ],
   );
   return UserInfo(
+    belongedGroupId: json['belongedGroup'] as String,
     username: json['username'] as String,
     email: json['email'] as String?,
     phoneNumber:
         const NullablePhoneNumberConverter().fromJson(json['phone'] as String?),
     accountCreateInfo: AccountCreateInfo.fromJson(
         json['accountCreateInfo'] as Map<String, dynamic>),
+    permissionOverride:
+        UserPermissionInfo.fromJson(json['permission'] as Map<String, dynamic>),
     passwordHash: json['passwordHash'] as String?,
     accountStatus: json['accountStatus'] == null
         ? AccountStatus.NORMAL
@@ -55,6 +60,7 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
+      'belongedGroup': instance.belongedGroupId,
       'username': instance.username,
       'email': instance.email,
       'emailVerified': instance.emailVerified,
@@ -70,4 +76,5 @@ Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
       'local': instance.localeCode,
       'accountCreateInfo':
           Serializable.convertToDynamicSerialized(instance.accountCreateInfo),
+      'permission': instance.permissionOverride,
     };
