@@ -9,11 +9,11 @@ part of 'user.dart';
 AccountCreateInfo _$AccountCreateInfoFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['createIP', 'createTime'],
+    requiredKeys: const ['createTime'],
   );
   return AccountCreateInfo(
-    json['createIP'] as String,
     json['createTime'] as int,
+    json['createIP'] as String?,
   );
 }
 

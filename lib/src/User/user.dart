@@ -58,8 +58,8 @@ class AccountStatus implements Serializable<int>{
 
 @JsonSerializable()
 class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(required:true, name: 'createIP')
-  final String createIPAddr;
+  @JsonKey(name: 'createIP')
+  final String? createIPAddr;
 
   @JsonKey(required: true, name: 'createTime')
   final int createTimeGMT;
@@ -67,7 +67,7 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
   @override
   Map<String, dynamic> serialize([String? locale]) => _$AccountCreateInfoToJson(this);
 
-  const AccountCreateInfo(this.createIPAddr, this.createTimeGMT);
+  const AccountCreateInfo(this.createTimeGMT, [this.createIPAddr]);
   
   factory AccountCreateInfo.fromMap(Map<String, dynamic> map) => _$AccountCreateInfoFromJson(map);
 
