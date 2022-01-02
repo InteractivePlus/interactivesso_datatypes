@@ -6,19 +6,19 @@ part 'usergroup.g.dart';
 
 @JsonSerializable()
 class UserGroupInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(required: true, name: 'groupId')
+  @JsonKey(required: true, name: 'group_id')
   String groupId;
 
-  @JsonKey(required: true, name: 'displayName')
+  @JsonKey(required: true, name: 'display_name')
   String displayName;
 
   @JsonKey(name: 'description')
   String? description;
 
-  @JsonKey(name: 'permissionOverride')
+  @JsonKey(required: true, name: 'permission_override')
   UserPermissionInfo permissionOverride;
 
-  @JsonKey(required: true, name: 'isNormalUser')
+  @JsonKey(required: true, name: 'is_normal_user')
   bool isNormalUser;
 
   UserGroupInfo({

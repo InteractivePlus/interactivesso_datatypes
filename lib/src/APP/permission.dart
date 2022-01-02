@@ -6,10 +6,10 @@ part 'permission.g.dart';
 
 @JsonSerializable()
 class APPPermissionInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(name:'canVerifyOtherAppSecret')
+  @JsonKey(name:'can_verify_other_app_secret')
   bool? canVerifyOtherAppSecret;
 
-  @JsonKey(required: true, name: 'oAuthPerm')
+  @JsonKey(required: true, name: 'oauth_perm')
   OAuthPermissionInfo oAuthPermission;
   
   void mergePermission(APPPermissionInfo toMergeIn){

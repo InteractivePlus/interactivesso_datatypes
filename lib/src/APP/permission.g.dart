@@ -9,17 +9,17 @@ part of 'permission.dart';
 APPPermissionInfo _$APPPermissionInfoFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['oAuthPerm'],
+    requiredKeys: const ['oauth_perm'],
   );
   return APPPermissionInfo(
-    oAuthPermission:
-        OAuthPermissionInfo.fromJson(json['oAuthPerm'] as Map<String, dynamic>),
-    canVerifyOtherAppSecret: json['canVerifyOtherAppSecret'] as bool?,
+    oAuthPermission: OAuthPermissionInfo.fromJson(
+        json['oauth_perm'] as Map<String, dynamic>),
+    canVerifyOtherAppSecret: json['can_verify_other_app_secret'] as bool?,
   );
 }
 
 Map<String, dynamic> _$APPPermissionInfoToJson(APPPermissionInfo instance) =>
     <String, dynamic>{
-      'canVerifyOtherAppSecret': instance.canVerifyOtherAppSecret,
-      'oAuthPerm': instance.oAuthPermission,
+      'can_verify_other_app_secret': instance.canVerifyOtherAppSecret,
+      'oauth_perm': instance.oAuthPermission,
     };

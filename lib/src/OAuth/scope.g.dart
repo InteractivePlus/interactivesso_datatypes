@@ -22,35 +22,38 @@ OAuthNotificationScopePermission _$OAuthNotificationScopePermissionFromJson(
         Map<String, dynamic> json) =>
     OAuthNotificationScopePermission(
       enabled: json['enabled'] as bool?,
-      maxNumberPerUserPerDay: json['maxPerUserPerDay'] as int?,
-      maxNumberPerUserPerMonth: json['maxPerUserPerMon'] as int?,
-      maxNumberAllUserPerMonth: json['maxPerMon'] as int?,
+      maxNumberPerUserPerDay: json['max_per_user_per_day'] as int?,
+      maxNumberPerUserPerMonth: json['max_per_user_per_mon'] as int?,
+      maxNumberAllUserPerMonth: json['max_per_mon'] as int?,
     );
 
 Map<String, dynamic> _$OAuthNotificationScopePermissionToJson(
         OAuthNotificationScopePermission instance) =>
     <String, dynamic>{
       'enabled': instance.enabled,
-      'maxPerUserPerDay': instance.maxNumberPerUserPerDay,
-      'maxPerUserPerMon': instance.maxNumberPerUserPerMonth,
-      'maxPerMon': instance.maxNumberAllUserPerMonth,
+      'max_per_user_per_day': instance.maxNumberPerUserPerDay,
+      'max_per_user_per_mon': instance.maxNumberPerUserPerMonth,
+      'max_per_mon': instance.maxNumberAllUserPerMonth,
     };
 
 OAuthListManagedAppsScopePermission
     _$OAuthListManagedAppsScopePermissionFromJson(Map<String, dynamic> json) =>
         OAuthListManagedAppsScopePermission(
           enabled: json['enabled'] as bool,
-          readAPPSecret: json['readSecret'] as bool?,
+          manageAPP: json['manage_app'] as bool?,
+          readAPPSecret: json['read_app_secret'] as bool?,
           readAPPDisplayNameAndDescription:
-              json['readNameAndDescription'] as bool?,
+              json['read_display_name_and_description'] as bool?,
         );
 
 Map<String, dynamic> _$OAuthListManagedAppsScopePermissionToJson(
         OAuthListManagedAppsScopePermission instance) =>
     <String, dynamic>{
       'enabled': instance.enabled,
-      'readSecret': instance.readAPPSecret,
-      'readNameAndDescription': instance.readAPPDisplayNameAndDescription,
+      'manage_app': instance.manageAPP,
+      'read_app_secret': instance.readAPPSecret,
+      'read_display_name_and_description':
+          instance.readAPPDisplayNameAndDescription,
     };
 
 OAuthPermissionInfo _$OAuthPermissionInfoFromJson(Map<String, dynamic> json) {

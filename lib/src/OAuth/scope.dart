@@ -82,13 +82,13 @@ class OAuthBasicInfoScopePermission extends OAuthSingleScopePermission implement
 
 @JsonSerializable()
 class OAuthNotificationScopePermission extends OAuthSingleScopePermission implements Serializable<Map<String,dynamic>>{
-  @JsonKey(name:'maxPerUserPerDay')
+  @JsonKey(name:'max_per_user_per_day')
   int? maxNumberPerUserPerDay;
 
-  @JsonKey(name:'maxPerUserPerMon')
+  @JsonKey(name:'max_per_user_per_mon')
   int? maxNumberPerUserPerMonth;
 
-  @JsonKey(name:'maxPerMon')
+  @JsonKey(name:'max_per_mon')
   int? maxNumberAllUserPerMonth;
 
   @override
@@ -138,10 +138,13 @@ class OAuthListManagedAppsScopePermission extends OAuthSingleScopePermission imp
   @JsonKey(ignore: true)
   bool get readAPPID => true;
 
-  @JsonKey(name: 'readSecret')
+  @JsonKey(name: 'manage_app')
+  bool? manageAPP;
+
+  @JsonKey(name: 'read_app_secret')
   bool? readAPPSecret;
 
-  @JsonKey(name: 'readNameAndDescription')
+  @JsonKey(name: 'read_display_name_and_description')
   bool? readAPPDisplayNameAndDescription;
 
   @override
@@ -177,7 +180,7 @@ class OAuthListManagedAppsScopePermission extends OAuthSingleScopePermission imp
   @override
   bool get isConcrete => super.isConcrete && readAPPSecret != null && readAPPDisplayNameAndDescription != null;
 
-  OAuthListManagedAppsScopePermission({required bool enabled, this.readAPPSecret, this.readAPPDisplayNameAndDescription}) : super(enabled: enabled);
+  OAuthListManagedAppsScopePermission({required bool enabled, this.manageAPP, this.readAPPSecret, this.readAPPDisplayNameAndDescription}) : super(enabled: enabled);
 
   factory OAuthListManagedAppsScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthListManagedAppsScopePermissionFromJson(map);
   static OAuthListManagedAppsScopePermission fromJson(Map<String,dynamic> json) => OAuthListManagedAppsScopePermission.fromMap(json);
