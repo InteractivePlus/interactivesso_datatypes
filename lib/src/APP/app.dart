@@ -49,7 +49,7 @@ class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
 
 @JsonSerializable()
 class ApplicationInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(required: true, name: 'appGroup')
+  @JsonKey(required: true, name: 'app_group')
   String belongedAPPGroupId;
 
   @JsonKey(required: true, name: 'client_id')
@@ -67,10 +67,10 @@ class ApplicationInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'permission')
   APPPermissionInfo permissionOverride;
 
-  @JsonKey(required: true, name: 'creationInfo')
+  @JsonKey(required: true, name: 'creation_info')
   ApplicationCreationInfo creationInfo;
 
-  @JsonKey(required: true, name: 'manageInfo')
+  @JsonKey(required: true, name: 'manage_info')
   ApplicationManagementInfo manageInfo;
 
   @override

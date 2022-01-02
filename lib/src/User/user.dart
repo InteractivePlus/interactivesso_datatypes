@@ -79,7 +79,7 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
 
 @JsonSerializable()
 class UserInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(required: true, name: 'belongedGroup')
+  @JsonKey(required: true, name: 'user_group')
   String belongedGroupId;
 
   @JsonKey(required: true, name: 'username')
@@ -88,17 +88,17 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(name: 'email')
   String? email;
 
-  @JsonKey(required: true, name: 'emailVerified')
+  @JsonKey(required: true, name: 'email_verified')
   bool emailVerified;
   
   @JsonKey(name: 'phone')
   @NullablePhoneNumberConverter()
   PhoneNumber? phoneNumber;
 
-  @JsonKey(required: true, name: 'phoneVerified')
+  @JsonKey(required: true, name: 'phone_verified')
   bool phoneVerified;
 
-  @JsonKey(required: true, name: 'accountStatus', fromJson: AccountStatus.fromJson, toJson: Serializable.convertToDynamicSerialized)
+  @JsonKey(required: true, name: 'account_status', fromJson: AccountStatus.fromJson, toJson: Serializable.convertToDynamicSerialized)
   AccountStatus accountStatus;
 
   @JsonKey(name: 'nickname')
@@ -107,7 +107,7 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(name: 'signature')
   String? signature;
 
-  @JsonKey(name: 'passwordHash')
+  @JsonKey(name: 'password_hash')
   String? passwordHash;
 
   @JsonKey(name: 'area')
@@ -116,7 +116,7 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(name:'local')
   String? localeCode;
 
-  @JsonKey(required: true, name:'accountCreateInfo', fromJson: AccountCreateInfo.fromJson, toJson: Serializable.convertToDynamicSerialized)
+  @JsonKey(required: true, name:'account_create_info', fromJson: AccountCreateInfo.fromJson, toJson: Serializable.convertToDynamicSerialized)
   AccountCreateInfo accountCreateInfo;
 
   @JsonKey(required: true, name:'permission')

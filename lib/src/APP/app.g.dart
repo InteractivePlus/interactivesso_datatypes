@@ -50,14 +50,14 @@ ApplicationInfo _$ApplicationInfoFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     requiredKeys: const [
-      'appGroup',
+      'app_group',
       'client_id',
       'client_secret',
       'display_name',
       'description',
       'permission',
-      'creationInfo',
-      'manageInfo'
+      'creation_info',
+      'manage_info'
     ],
   );
   return ApplicationInfo(
@@ -68,21 +68,21 @@ ApplicationInfo _$ApplicationInfoFromJson(Map<String, dynamic> json) {
     permissionOverride:
         APPPermissionInfo.fromJson(json['permission'] as Map<String, dynamic>),
     creationInfo: ApplicationCreationInfo.fromJson(
-        json['creationInfo'] as Map<String, dynamic>),
+        json['creation_info'] as Map<String, dynamic>),
     manageInfo: ApplicationManagementInfo.fromJson(
-        json['manageInfo'] as Map<String, dynamic>),
-    belongedAPPGroupId: json['appGroup'] as String,
+        json['manage_info'] as Map<String, dynamic>),
+    belongedAPPGroupId: json['app_group'] as String,
   );
 }
 
 Map<String, dynamic> _$ApplicationInfoToJson(ApplicationInfo instance) =>
     <String, dynamic>{
-      'appGroup': instance.belongedAPPGroupId,
+      'app_group': instance.belongedAPPGroupId,
       'client_id': instance.clientId,
       'client_secret': instance.clientSecret,
       'display_name': instance.displayName,
       'description': instance.description,
       'permission': instance.permissionOverride,
-      'creationInfo': instance.creationInfo,
-      'manageInfo': instance.manageInfo,
+      'creation_info': instance.creationInfo,
+      'manage_info': instance.manageInfo,
     };

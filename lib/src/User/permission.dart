@@ -5,22 +5,22 @@ part 'permission.g.dart';
 
 @JsonSerializable()
 class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(name: 'canCreateAPP')
+  @JsonKey(name: 'can_create_app')
   bool? canCreateAPP;
 
-  @JsonKey(name:"canManageNormalUsers")
+  @JsonKey(name:"can_manage_normal_users")
   bool? canManageNormalUsers;
 
-  @JsonKey(name:"canManageOtherAdmins")
+  @JsonKey(name:"can_manage_other_admins")
   bool? canManageOtherAdmins;
 
-  @JsonKey(name: 'canManageNormalAPPs')
+  @JsonKey(name: 'can_manage_normal_apps')
   bool? canManageNormalAPPs;
 
-  @JsonKey(name: "canManageSpecialAPPs")
+  @JsonKey(name: "can_manage_special_apps")
   bool? canManageSpecialAPPs;
 
-  @JsonKey(name: "maxOwnedAPPs")
+  @JsonKey(name: "max_owned_apps")
   int? maxOwnedAPPs;
 
   bool get isEmpty {

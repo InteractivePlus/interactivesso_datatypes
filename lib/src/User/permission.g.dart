@@ -8,20 +8,20 @@ part of 'permission.dart';
 
 UserPermissionInfo _$UserPermissionInfoFromJson(Map<String, dynamic> json) =>
     UserPermissionInfo(
-      canCreateAPP: json['canCreateAPP'] as bool?,
-      canManageNormalUsers: json['canManageNormalUsers'] as bool?,
-      canManageOtherAdmins: json['canManageOtherAdmins'] as bool?,
-      canManageNormalAPPs: json['canManageNormalAPPs'] as bool?,
-      canManageSpecialAPPs: json['canManageSpecialAPPs'] as bool?,
-      maxOwnedAPPs: json['maxOwnedAPPs'] as int?,
+      canCreateAPP: json['can_create_app'] as bool?,
+      canManageNormalUsers: json['can_manage_normal_users'] as bool?,
+      canManageOtherAdmins: json['can_manage_other_admins'] as bool?,
+      canManageNormalAPPs: json['can_manage_normal_apps'] as bool?,
+      canManageSpecialAPPs: json['can_manage_special_apps'] as bool?,
+      maxOwnedAPPs: json['max_owned_apps'] as int?,
     );
 
 Map<String, dynamic> _$UserPermissionInfoToJson(UserPermissionInfo instance) =>
     <String, dynamic>{
-      'canCreateAPP': instance.canCreateAPP,
-      'canManageNormalUsers': instance.canManageNormalUsers,
-      'canManageOtherAdmins': instance.canManageOtherAdmins,
-      'canManageNormalAPPs': instance.canManageNormalAPPs,
-      'canManageSpecialAPPs': instance.canManageSpecialAPPs,
-      'maxOwnedAPPs': instance.maxOwnedAPPs,
+      'can_create_app': instance.canCreateAPP,
+      'can_manage_normal_users': instance.canManageNormalUsers,
+      'can_manage_other_admins': instance.canManageOtherAdmins,
+      'can_manage_normal_apps': instance.canManageNormalAPPs,
+      'can_manage_special_apps': instance.canManageSpecialAPPs,
+      'max_owned_apps': instance.maxOwnedAPPs,
     };
