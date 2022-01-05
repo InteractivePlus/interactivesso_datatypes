@@ -14,11 +14,11 @@ class AccountStatus implements Serializable<int>{
   
   @override
   int serialize([String? locale]){
-    if(this == NORMAL){
+    if(identical(this,NORMAL)){
       return 0;
-    }else if(this == NOT_VERIFIED){
+    }else if(identical(this,NOT_VERIFIED)){
       return 1;
-    }else if(this == POTENTIAL_ATTACK){
+    }else if(identical(this, POTENTIAL_ATTACK)){
       return 2;
     }else{
       return 3;

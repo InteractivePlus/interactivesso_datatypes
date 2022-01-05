@@ -5,8 +5,8 @@ part 'permission.g.dart';
 
 @JsonSerializable()
 class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(name: 'can_create_app')
-  bool? canCreateAPP;
+  @JsonKey(name: 'can_own_app')
+  bool? canOwnAPP;
 
   @JsonKey(name:"can_manage_normal_users")
   bool? canManageNormalUsers;
@@ -25,7 +25,7 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
 
   bool get isEmpty {
     return (
-      canCreateAPP == null 
+      canOwnAPP == null 
       && canManageNormalAPPs == null
       && canManageSpecialAPPs == null
       && canManageNormalUsers == null
@@ -37,7 +37,7 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
   /// Returns true is all fields has been set to non-null
   bool get isConcrete{
     return (
-      canCreateAPP != null 
+      canOwnAPP != null 
       && canManageNormalAPPs != null
       && canManageSpecialAPPs != null
       && canManageNormalUsers != null
@@ -46,9 +46,9 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
     );
   }
 
-  UserPermissionInfo({this.canCreateAPP,this.canManageNormalUsers, this.canManageOtherAdmins, this.canManageNormalAPPs, this.canManageSpecialAPPs, this.maxOwnedAPPs});
+  UserPermissionInfo({this.canOwnAPP,this.canManageNormalUsers, this.canManageOtherAdmins, this.canManageNormalAPPs, this.canManageSpecialAPPs, this.maxOwnedAPPs});
   UserPermissionInfo.copy(UserPermissionInfo other){
-    canCreateAPP = other.canCreateAPP;
+    canOwnAPP = other.canOwnAPP;
     canManageNormalUsers = other.canManageNormalUsers;
     canManageOtherAdmins = other.canManageOtherAdmins;
     canManageNormalAPPs = other.canManageNormalAPPs;
@@ -85,7 +85,7 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
   }
 
   static void _combinePermissionInfoMutable(UserPermissionInfo mutable,UserPermissionInfo other){
-    mutable.canCreateAPP ??= other.canCreateAPP;
+    mutable.canOwnAPP ??= other.canOwnAPP;
     mutable.canManageNormalUsers ??= other.canManageNormalUsers;
     mutable.canManageOtherAdmins ??= other.canManageOtherAdmins;
     mutable.canManageNormalAPPs ??= other.canManageNormalAPPs;

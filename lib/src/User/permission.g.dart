@@ -8,7 +8,7 @@ part of 'permission.dart';
 
 UserPermissionInfo _$UserPermissionInfoFromJson(Map<String, dynamic> json) =>
     UserPermissionInfo(
-      canCreateAPP: json['can_create_app'] as bool?,
+      canOwnAPP: json['can_own_app'] as bool?,
       canManageNormalUsers: json['can_manage_normal_users'] as bool?,
       canManageOtherAdmins: json['can_manage_other_admins'] as bool?,
       canManageNormalAPPs: json['can_manage_normal_apps'] as bool?,
@@ -18,7 +18,7 @@ UserPermissionInfo _$UserPermissionInfoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$UserPermissionInfoToJson(UserPermissionInfo instance) =>
     <String, dynamic>{
-      'can_create_app': instance.canCreateAPP,
+      'can_own_app': instance.canOwnAPP,
       'can_manage_normal_users': instance.canManageNormalUsers,
       'can_manage_other_admins': instance.canManageOtherAdmins,
       'can_manage_normal_apps': instance.canManageNormalAPPs,
