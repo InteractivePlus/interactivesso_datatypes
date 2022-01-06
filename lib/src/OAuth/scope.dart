@@ -65,11 +65,14 @@ abstract class OAuthSingleScopePermission{
   }
 
   OAuthSingleScopePermission({required this.enabled});
+  OAuthSingleScopePermission.copy(OAuthSingleScopePermission other) : this(enabled: other.enabled);
 }
 
 @JsonSerializable()
 class OAuthBasicInfoScopePermission extends OAuthSingleScopePermission implements Serializable<Map<String,dynamic>>{
   OAuthBasicInfoScopePermission({required bool? enabled}) : super(enabled: enabled);
+  OAuthBasicInfoScopePermission.copy(OAuthBasicInfoScopePermission other) : super.copy(other);
+
   @override
   Map<String, dynamic> serialize([String? locale]) => _$OAuthBasicInfoScopePermissionToJson(this);
 
@@ -78,6 +81,7 @@ class OAuthBasicInfoScopePermission extends OAuthSingleScopePermission implement
 
   factory OAuthBasicInfoScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthBasicInfoScopePermissionFromJson(map);
   static OAuthBasicInfoScopePermission fromJson(Map<String,dynamic> json) => OAuthBasicInfoScopePermission.fromMap(json);
+  static final OAuthBasicInfoScopePermission EMPTY_MASK = OAuthBasicInfoScopePermission(enabled: null);
 }
 
 @JsonSerializable()
@@ -128,9 +132,17 @@ class OAuthNotificationScopePermission extends OAuthSingleScopePermission implem
   Map<String,dynamic> toJson() => serialize(null);
 
   OAuthNotificationScopePermission({required bool? enabled, this.maxNumberPerUserPerDay, this.maxNumberPerUserPerMonth, this.maxNumberAllUserPerMonth}) : super(enabled:enabled);
-  
+  OAuthNotificationScopePermission.copy(OAuthNotificationScopePermission other) : this(
+    enabled:other.enabled,
+    maxNumberPerUserPerDay: other.maxNumberPerUserPerDay,
+    maxNumberPerUserPerMonth: other.maxNumberPerUserPerMonth,
+    maxNumberAllUserPerMonth: other.maxNumberAllUserPerMonth
+  );
+
   factory OAuthNotificationScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthNotificationScopePermissionFromJson(map);
   static OAuthNotificationScopePermission fromJson(Map<String,dynamic> json) => OAuthNotificationScopePermission.fromMap(json);
+
+  static final OAuthNotificationScopePermission EMPTY_MASK = OAuthNotificationScopePermission(enabled: false);
 }
 
 @JsonSerializable()
@@ -180,10 +192,18 @@ class OAuthListManagedAppsScopePermission extends OAuthSingleScopePermission imp
   @override
   bool get isConcrete => super.isConcrete && readAPPSecret != null && readAPPDisplayNameAndDescription != null;
 
-  OAuthListManagedAppsScopePermission({required bool enabled, this.manageAPP, this.readAPPSecret, this.readAPPDisplayNameAndDescription}) : super(enabled: enabled);
+  OAuthListManagedAppsScopePermission({required bool? enabled, this.manageAPP, this.readAPPSecret, this.readAPPDisplayNameAndDescription}) : super(enabled: enabled);
+  OAuthListManagedAppsScopePermission.copy(OAuthListManagedAppsScopePermission other) : this(
+    enabled: other.enabled,
+    manageAPP: other.manageAPP,
+    readAPPSecret: other.readAPPSecret,
+    readAPPDisplayNameAndDescription: other.readAPPDisplayNameAndDescription
+  );
 
   factory OAuthListManagedAppsScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthListManagedAppsScopePermissionFromJson(map);
   static OAuthListManagedAppsScopePermission fromJson(Map<String,dynamic> json) => OAuthListManagedAppsScopePermission.fromMap(json);
+
+  static final OAuthListManagedAppsScopePermission EMPTY_MASK = OAuthListManagedAppsScopePermission(enabled: null);
 }
 
 @JsonSerializable()
@@ -226,7 +246,18 @@ class OAuthPermissionInfo implements Serializable<Map<String,dynamic>>{
   }
 
   OAuthPermissionInfo({required this.basicInfoPerm, required this.notificationPerm, required this.listManagedAppsPerm});
+  OAuthPermissionInfo.copy(OAuthPermissionInfo other) : this(
+    basicInfoPerm: OAuthBasicInfoScopePermission.copy(other.basicInfoPerm),
+    notificationPerm: OAuthNotificationScopePermission.copy(other.notificationPerm),
+    listManagedAppsPerm: OAuthListManagedAppsScopePermission.copy(other.listManagedAppsPerm)
+  );
 
   factory OAuthPermissionInfo.fromMap(Map<String,dynamic> map) => _$OAuthPermissionInfoFromJson(map);
   static OAuthPermissionInfo fromJson(Map<String,dynamic> json) => OAuthPermissionInfo.fromMap(json);
+
+  static final OAuthPermissionInfo EMPTY_MASK = OAuthPermissionInfo(
+    basicInfoPerm: OAuthBasicInfoScopePermission.EMPTY_MASK, 
+    notificationPerm: OAuthNotificationScopePermission.EMPTY_MASK, 
+    listManagedAppsPerm: OAuthListManagedAppsScopePermission.EMPTY_MASK
+  );
 }

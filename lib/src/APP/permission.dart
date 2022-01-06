@@ -32,7 +32,13 @@ class APPPermissionInfo implements Serializable<Map<String,dynamic>>{
   Map<String,dynamic> toJson() => serialize(null);
 
   APPPermissionInfo({required this.oAuthPermission, this.canVerifyOtherAppSecret});
+  APPPermissionInfo.copy(APPPermissionInfo other) : this(
+    oAuthPermission: OAuthPermissionInfo.copy(other.oAuthPermission),
+    canVerifyOtherAppSecret: other.canVerifyOtherAppSecret
+  );
 
   factory APPPermissionInfo.fromMap(Map<String,dynamic> map) => _$APPPermissionInfoFromJson(map);
   static APPPermissionInfo fromJson(Map<String,dynamic> json) => APPPermissionInfo.fromMap(json);
+
+  static final APPPermissionInfo EMPTY_MASK = APPPermissionInfo(oAuthPermission: OAuthPermissionInfo.EMPTY_MASK, canVerifyOtherAppSecret: null);
 }
