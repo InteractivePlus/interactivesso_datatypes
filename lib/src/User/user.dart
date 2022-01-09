@@ -85,6 +85,9 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'username')
   String username;
 
+  @JsonKey(required: true, name: 'user_unique_id')
+  final String userUniqueId;
+
   @JsonKey(name: 'email')
   String? email;
 
@@ -131,6 +134,7 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   UserInfo({
     required this.belongedGroupId,
     required this.username, 
+    required this.userUniqueId,
     this.email, 
     this.phoneNumber, 
     required this.accountCreateInfo,

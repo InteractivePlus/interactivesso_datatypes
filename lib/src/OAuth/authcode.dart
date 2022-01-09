@@ -27,8 +27,8 @@ class AuthorizationCode implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'time_info')
   ExpirableInfo expirableInfo;
 
-  @JsonKey(required: true, name: 'username')
-  String username;
+  @JsonKey(required: true, name: 'user_unique_id')
+  String userUniqueId;
 
   @JsonKey(required: true, name: 'exchange_method', toJson: Serializable.convertToDynamicSerialized, fromJson: ExchangeMethod.fromJson)
   ExchangeMethod exchangeMethod;
@@ -48,7 +48,7 @@ class AuthorizationCode implements Serializable<Map<String,dynamic>>{
     required this.appClientId, 
     required this.authorizedOAuthSetting, 
     required this.expirableInfo, 
-    required this.username, 
+    required this.userUniqueId, 
     required this.exchangeMethod}
   ){
     if(challengeType.isValidChallengeString(challenge)){
