@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_datatypes/src/Util/permission_util.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../Util/permission_util.dart';
 
 part 'scope.g.dart';
 

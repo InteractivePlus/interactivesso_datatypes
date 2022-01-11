@@ -1,8 +1,9 @@
 
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_datatypes/src/Common/expirableinfo.dart';
-import 'package:interactivesso_datatypes/src/OAuth/exchangemethod.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../Common/expirableinfo.dart';
+import 'exchangemethod.dart';
 
 part 'token.g.dart';
 

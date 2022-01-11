@@ -1,8 +1,9 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_datatypes/src/User/permission.dart';
-import 'package:interactivesso_datatypes/src/Util/phone_number_serialization.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
+
+import 'permission.dart';
+import '../Util/phone_number_serialization.dart';
 
 part 'user.g.dart';
 

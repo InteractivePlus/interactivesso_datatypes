@@ -1,6 +1,7 @@
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_datatypes/src/OAuth/scope.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../OAuth/scope.dart';
 
 part 'permission.g.dart';
 

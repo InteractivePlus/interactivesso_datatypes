@@ -1,10 +1,10 @@
 
 import 'dart:convert';
-
 import 'package:crypto/crypto.dart';
 import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
-import 'package:interactivesso_datatypes/src/APP/permission.dart';
-import 'package:interactivesso_datatypes/src/OAuth/scope.dart';
+
+import '../APP/permission.dart';
+import 'scope.dart';
 
 class AuthCodeChallengeTypes implements Serializable<String>{
   final bool Function(String? challenge, String? verifier) verifyCodeVerifier;
