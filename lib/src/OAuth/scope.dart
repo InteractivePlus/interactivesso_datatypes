@@ -24,6 +24,13 @@ class OAuthScope implements Serializable<String>{
   }
 
   static OAuthScope fromJson(String st) => OAuthScope.fromString(st);
+  static OAuthScope? fromJsonNullable(String? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   @override
   String serialize([String? locale]) => stringRep;
@@ -82,6 +89,13 @@ class OAuthBasicInfoScopePermission extends OAuthSingleScopePermission implement
 
   factory OAuthBasicInfoScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthBasicInfoScopePermissionFromJson(map);
   static OAuthBasicInfoScopePermission fromJson(Map<String,dynamic> json) => OAuthBasicInfoScopePermission.fromMap(json);
+  static OAuthBasicInfoScopePermission? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
   static final OAuthBasicInfoScopePermission EMPTY_MASK = OAuthBasicInfoScopePermission(enabled: null);
 }
 
@@ -142,6 +156,13 @@ class OAuthNotificationScopePermission extends OAuthSingleScopePermission implem
 
   factory OAuthNotificationScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthNotificationScopePermissionFromJson(map);
   static OAuthNotificationScopePermission fromJson(Map<String,dynamic> json) => OAuthNotificationScopePermission.fromMap(json);
+  static OAuthNotificationScopePermission? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   static final OAuthNotificationScopePermission EMPTY_MASK = OAuthNotificationScopePermission(enabled: false);
 }
@@ -203,7 +224,13 @@ class OAuthListManagedAppsScopePermission extends OAuthSingleScopePermission imp
 
   factory OAuthListManagedAppsScopePermission.fromMap(Map<String,dynamic> map) => _$OAuthListManagedAppsScopePermissionFromJson(map);
   static OAuthListManagedAppsScopePermission fromJson(Map<String,dynamic> json) => OAuthListManagedAppsScopePermission.fromMap(json);
-
+  static OAuthListManagedAppsScopePermission? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
   static final OAuthListManagedAppsScopePermission EMPTY_MASK = OAuthListManagedAppsScopePermission(enabled: null);
 }
 
@@ -255,7 +282,13 @@ class OAuthPermissionInfo implements Serializable<Map<String,dynamic>>{
 
   factory OAuthPermissionInfo.fromMap(Map<String,dynamic> map) => _$OAuthPermissionInfoFromJson(map);
   static OAuthPermissionInfo fromJson(Map<String,dynamic> json) => OAuthPermissionInfo.fromMap(json);
-
+  static OAuthPermissionInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
   static final OAuthPermissionInfo EMPTY_MASK = OAuthPermissionInfo(
     basicInfoPerm: OAuthBasicInfoScopePermission.EMPTY_MASK, 
     notificationPerm: OAuthNotificationScopePermission.EMPTY_MASK, 

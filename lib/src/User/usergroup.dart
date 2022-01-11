@@ -39,6 +39,13 @@ class UserGroupInfo implements Serializable<Map<String,dynamic>>{
 
   factory UserGroupInfo.fromMap(Map<String,dynamic> map) => _$UserGroupInfoFromJson(map);
   static UserGroupInfo fromJson(Map<String,dynamic> json) => UserGroupInfo.fromMap(json);
+  static UserGroupInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   @override
   Map<String, dynamic> serialize([String? locale]) => _$UserGroupInfoToJson(this);

@@ -45,6 +45,13 @@ class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
   ApplicationManagementInfo(this.ownerUsername, this.adminListUsernames);
   factory ApplicationManagementInfo.fromMap(Map<String,dynamic> map)  => _$ApplicationManagementInfoFromJson(map);
   static ApplicationManagementInfo fromJson(Map<String,dynamic> json) => ApplicationManagementInfo.fromMap(json);
+  static ApplicationManagementInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }
 
 @JsonSerializable()
@@ -92,4 +99,11 @@ class ApplicationInfo implements Serializable<Map<String,dynamic>>{
 
   factory ApplicationInfo.fromMap(Map<String,dynamic> map) => _$ApplicationInfoFromJson(map);
   static ApplicationInfo fromJson(Map<String,dynamic> json) => ApplicationInfo.fromMap(json);
+  static ApplicationInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

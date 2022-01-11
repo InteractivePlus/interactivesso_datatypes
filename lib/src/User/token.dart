@@ -49,4 +49,11 @@ class UserToken implements Serializable<Map<String,dynamic>>{
   });
   factory UserToken.fromMap(Map<String,dynamic> map) => _$UserTokenFromJson(map);
   static UserToken fromJson(Map<String,dynamic> json) => UserToken.fromMap(json);
+  static UserToken? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

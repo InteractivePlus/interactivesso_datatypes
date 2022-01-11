@@ -55,4 +55,11 @@ class OAuthToken implements Serializable<Map<String,dynamic>>{
   });
   factory OAuthToken.fromMap(Map<String,dynamic> map) => _$OAuthTokenFromJson(map);
   static OAuthToken fromJson(Map<String,dynamic> json) => OAuthToken.fromMap(json);
+  static OAuthToken? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

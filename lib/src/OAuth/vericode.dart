@@ -24,7 +24,7 @@ class OAuthVeriCode implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'expires')
   ExpirableInfo expires;
 
-  @JsonKey(name: 'sent_method', toJson: Serializable.convertToDynamicSerializedWithNullable, fromJson: CommunicationMethod.fromJson)
+  @JsonKey(name: 'sent_method', toJson: Serializable.convertToDynamicSerializedWithNullable, fromJson: CommunicationMethod.fromJsonNullable)
   CommunicationMethod? sentMethod;
 
   @JsonKey(name: 'use_scope')
@@ -39,4 +39,11 @@ class OAuthVeriCode implements Serializable<Map<String,dynamic>>{
   OAuthVeriCode({required this.vericodeId, required this.isShortId, required this.userUniqueId, required this.appClientId, required this.expires, this.sentMethod, this.useScope});
   factory OAuthVeriCode.fromMap(Map<String,dynamic> map) => _$OAuthVeriCodeFromJson(map);
   static OAuthVeriCode fromJson(Map<String,dynamic> json) => OAuthVeriCode.fromMap(json);
+  static OAuthVeriCode? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

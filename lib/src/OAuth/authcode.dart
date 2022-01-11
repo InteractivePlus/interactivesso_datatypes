@@ -62,4 +62,11 @@ class AuthorizationCode implements Serializable<Map<String,dynamic>>{
 
   factory AuthorizationCode.fromMap(Map<String,dynamic> map) => _$AuthorizationCodeFromJson(map);
   static AuthorizationCode fromJson(Map<String,dynamic> json) => AuthorizationCode.fromMap(json);
+  static AuthorizationCode? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

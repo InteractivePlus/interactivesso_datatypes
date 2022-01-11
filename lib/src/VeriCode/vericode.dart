@@ -24,7 +24,7 @@ class VerificationCode implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'issue_ip')
   String issueTimeRemoteIp;
 
-  @JsonKey(name: 'sent_method', toJson: Serializable.convertToDynamicSerializedWithNullable, fromJson: CommunicationMethod.fromJson)
+  @JsonKey(name: 'sent_method', toJson: Serializable.convertToDynamicSerializedWithNullable, fromJson: CommunicationMethod.fromJsonNullable)
   CommunicationMethod? sentMethod;
 
   @JsonKey(name: 'use_scope')
@@ -39,4 +39,11 @@ class VerificationCode implements Serializable<Map<String,dynamic>>{
   VerificationCode({required this.vericodeId, required this.isShortId, required this.relatedUsername, required this.expires, required this.issueTimeRemoteIp, required this.sentMethod, this.useScope});
   factory VerificationCode.fromMap(Map<String,dynamic> map) => _$VerificationCodeFromJson(map);
   static VerificationCode fromJson(Map<String,dynamic> json) => VerificationCode.fromMap(json);
+  static VerificationCode? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

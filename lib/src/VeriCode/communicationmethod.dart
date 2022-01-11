@@ -39,6 +39,13 @@ class CommunicationMethod implements Serializable<String>{
     throw InteractivePlusSystemException.SERIALIZATION_EXCEPTION;
   }
   static CommunicationMethod fromJson(String json) => CommunicationMethod.fromString(json);
+  static CommunicationMethod? fromJsonNullable(String? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   static const CommunicationMethod SMS = CommunicationMethod(verifyTarget: PhoneOrEmail.phone, needShortCodeForVerification: true);
   static const CommunicationMethod PHONE_CALL = CommunicationMethod(verifyTarget: PhoneOrEmail.phone, needShortCodeForVerification: true);

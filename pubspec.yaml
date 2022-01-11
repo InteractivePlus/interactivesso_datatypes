@@ -19,6 +19,6 @@ dev_dependencies:
 dependencies: 
   country_code: ^1.0.0
   crypto: ^3.0.1
-  interactiveplus_shared_dart: ^0.0.9
+  interactiveplus_shared_dart: ^0.0.10
   json_annotation: ^4.4.0
   phone_numbers_parser: ^4.2.0

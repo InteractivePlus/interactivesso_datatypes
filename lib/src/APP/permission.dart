@@ -40,6 +40,13 @@ class APPPermissionInfo implements Serializable<Map<String,dynamic>>{
 
   factory APPPermissionInfo.fromMap(Map<String,dynamic> map) => _$APPPermissionInfoFromJson(map);
   static APPPermissionInfo fromJson(Map<String,dynamic> json) => APPPermissionInfo.fromMap(json);
+  static APPPermissionInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   static final APPPermissionInfo EMPTY_MASK = APPPermissionInfo(oAuthPermission: OAuthPermissionInfo.EMPTY_MASK, canVerifyOtherAppSecret: null);
 }

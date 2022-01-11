@@ -57,6 +57,13 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
   }
   factory UserPermissionInfo.fromMap(Map<String,dynamic> map) => _$UserPermissionInfoFromJson(map);
   static UserPermissionInfo fromJson(Map<String,dynamic> json) => UserPermissionInfo.fromMap(json);
+  static UserPermissionInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
   @override
   Map<String, dynamic> serialize([String? locale]) => _$UserPermissionInfoToJson(this);
 

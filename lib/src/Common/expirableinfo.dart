@@ -20,4 +20,11 @@ class ExpirableInfo implements Serializable<Map<String,dynamic>>{
   ExpirableInfo({required this.createTimeGMT, required this.expireTimeGMT});
   factory ExpirableInfo.fromMap(Map<String,dynamic> map) => _$ExpirableInfoFromJson(map);
   static ExpirableInfo fromJson(Map<String,dynamic> json) => ExpirableInfo.fromMap(json);
+  static ExpirableInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

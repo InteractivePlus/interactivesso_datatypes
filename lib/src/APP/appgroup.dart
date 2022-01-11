@@ -32,4 +32,11 @@ class APPGroupInfo implements Serializable<Map<String,dynamic>>{
   APPGroupInfo({required this.groupId, required this.displayName, this.description, required this.permissionOverride, required this.isNormalAPP});
   factory APPGroupInfo.fromMap(Map<String,dynamic> map) => _$APPGroupInfoFromJson(map);
   static APPGroupInfo fromJson(Map<String,dynamic> json) => APPGroupInfo.fromMap(json);
+  static APPGroupInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 }

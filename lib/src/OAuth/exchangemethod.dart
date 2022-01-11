@@ -38,6 +38,13 @@ class AuthCodeChallengeTypes implements Serializable<String>{
     }
   }
   static AuthCodeChallengeTypes fromJson(String json) => AuthCodeChallengeTypes.fromString(json);
+  static AuthCodeChallengeTypes? fromJsonNullable(String? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   static const NONE = AuthCodeChallengeTypes._(verifyCodeVerifier: _NoneChallengeVerifyVerifier, isValidChallengeString: _isValidNoneChallenge, encodeVerifierIntoChallenge: _NoneEncodeVerifier);
   static const PLAIN = AuthCodeChallengeTypes._(verifyCodeVerifier: _PlainChallengeVerifyVerifier, isValidChallengeString: _isValidPlainChallenge, encodeVerifierIntoChallenge: _PlainEncodeVerifier);
@@ -90,6 +97,13 @@ class ExchangeMethod implements Serializable<String>{
     }
   }
   static ExchangeMethod fromJson(String json) => ExchangeMethod.fromString(json);
+  static ExchangeMethod? fromJsonNullable(String? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   @override
   String serialize([String? locale]){

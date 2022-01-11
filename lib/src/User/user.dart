@@ -50,6 +50,13 @@ class AccountStatus implements Serializable<int>{
   static AccountStatus fromJson(int json){
     return AccountStatus.fromInt(json);
   }
+  static AccountStatus? fromJsonNullable(int? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
   
   static const AccountStatus NORMAL = AccountStatus._(true, true, true, true);
   static const AccountStatus NOT_VERIFIED = AccountStatus._(false, true, true, true);
@@ -73,6 +80,13 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
   factory AccountCreateInfo.fromMap(Map<String, dynamic> map) => _$AccountCreateInfoFromJson(map);
 
   static AccountCreateInfo fromJson(Map<String,dynamic> json) => AccountCreateInfo.fromMap(json);
+  static AccountCreateInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   @override
   Map<String, dynamic> toJson() => serialize(null);
@@ -153,6 +167,13 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   factory UserInfo.fromMap(Map<String,dynamic> map) => _$UserInfoFromJson(map);
 
   static UserInfo fromJson(Map<String,dynamic> json) => UserInfo.fromMap(json);
+  static UserInfo? fromJsonNullable(Map<String,dynamic>? json){
+    if(json == null){
+      return null;
+    }else{
+      return fromJson(json);
+    }
+  }
 
   @override
   Map<String, dynamic> toJson() {
