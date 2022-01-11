@@ -15,8 +15,8 @@ class VerificationCode implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'is_short_id')
   bool isShortId;
 
-  @JsonKey(required: true, name: 'username')
-  String relatedUsername;
+  @JsonKey(required: true, name: 'user_unique_id')
+  String relatedUserUniqueId;
 
   @JsonKey(required: true, name: 'expires')
   ExpirableInfo expires;
@@ -36,7 +36,7 @@ class VerificationCode implements Serializable<Map<String,dynamic>>{
   @override
   Map<String,dynamic> toJson() => serialize(null);
 
-  VerificationCode({required this.vericodeId, required this.isShortId, required this.relatedUsername, required this.expires, required this.issueTimeRemoteIp, required this.sentMethod, this.useScope});
+  VerificationCode({required this.vericodeId, required this.isShortId, required this.relatedUserUniqueId, required this.expires, required this.issueTimeRemoteIp, required this.sentMethod, this.useScope});
   factory VerificationCode.fromMap(Map<String,dynamic> map) => _$VerificationCodeFromJson(map);
   static VerificationCode fromJson(Map<String,dynamic> json) => VerificationCode.fromMap(json);
   static VerificationCode? fromJsonNullable(Map<String,dynamic>? json){
