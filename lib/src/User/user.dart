@@ -92,7 +92,7 @@ class AccountCreateInfo implements Serializable<Map<String,dynamic>>{
   Map<String, dynamic> toJson() => serialize(null);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'user_group')
   String belongedGroupId;
@@ -134,6 +134,9 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(name:'local')
   String? localeCode;
 
+  @JsonKey(name: 'avatar_hash')
+  String? avatarHash;
+
   @JsonKey(required: true, name:'account_create_info', fromJson: AccountCreateInfo.fromJson, toJson: Serializable.convertToDynamicSerialized)
   AccountCreateInfo accountCreateInfo;
 
@@ -161,7 +164,8 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
     this.nickname,
     this.signature,
     this.areaAlpha2Code,
-    this.localeCode
+    this.localeCode,
+    this.avatarHash
   });
 
   factory UserInfo.fromMap(Map<String,dynamic> map) => _$UserInfoFromJson(map);

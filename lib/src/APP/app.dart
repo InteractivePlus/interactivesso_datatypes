@@ -54,7 +54,7 @@ class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class ApplicationInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'app_group')
   String belongedAPPGroupId;
@@ -80,6 +80,9 @@ class ApplicationInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'manage_info')
   ApplicationManagementInfo manageInfo;
 
+  @JsonKey(name: 'avatar_hash')
+  String? avatarHash;
+
   @override
   Map<String,dynamic> serialize([String? locale]) => _$ApplicationInfoToJson(this);
 
@@ -94,7 +97,8 @@ class ApplicationInfo implements Serializable<Map<String,dynamic>>{
     required this.permissionOverride, 
     required this.creationInfo, 
     required this.manageInfo,
-    required this.belongedAPPGroupId
+    required this.belongedAPPGroupId,
+    this.avatarHash
   });
 
   factory ApplicationInfo.fromMap(Map<String,dynamic> map) => _$ApplicationInfoFromJson(map);

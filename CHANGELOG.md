@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Add Avatar and Captcha Info Classes.
+
 ## 0.0.4
 
 - Fix a bug where VeriCode has a bad property username instead of uniqueId
