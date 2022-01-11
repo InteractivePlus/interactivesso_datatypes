@@ -7,6 +7,10 @@ export 'src/APP/app.dart';
 export 'src/APP/appgroup.dart';
 export 'src/APP/permission.dart';
 
+export 'src/Avatar/avatarinfo.dart';
+
+export 'src/Captcha/captchainfo.dart';
+
 export 'src/Common/expirableinfo.dart';
 
 export 'src/OAuth/authcode.dart';
