@@ -15,7 +15,7 @@ void main() {
   });
 
   test("test",(){
-    PhoneNumber parsed = PhoneNumber.fromRaw("+86-137-889-12157");
+    PhoneNumber parsed = PhoneNumber.fromRaw("+86-137-868-14367");
     print(parsed.international);
     expect(parsed.countryCode,"86");
   });
