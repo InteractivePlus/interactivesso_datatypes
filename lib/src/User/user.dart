@@ -131,7 +131,7 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(name: 'area')
   String? areaAlpha2Code;
 
-  @JsonKey(name:'local')
+  @JsonKey(name:'locale')
   String? localeCode;
 
   @JsonKey(name: 'avatar_hash')
