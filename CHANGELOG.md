@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Add AvatarInfo Implementation that can fetch from URL
+
 ## 0.0.5
 
 - Add Avatar and Captcha Info Classes.
