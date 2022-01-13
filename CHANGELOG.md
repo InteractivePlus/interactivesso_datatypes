@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Bugfix on OAuthToken that should have a OAuthPermission set by user setting.
+
 ## 0.0.6
 
 - Add AvatarInfo Implementation that can fetch from URL
