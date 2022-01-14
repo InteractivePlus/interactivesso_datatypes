@@ -8,8 +8,8 @@ part 'app.g.dart';
 
 @JsonSerializable()
 class ApplicationCreationInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(required: true, name: 'created_by')
-  final String createdByUsername;
+  @JsonKey(required: true, name: 'created_by_uid')
+  final String createdByUserUniqueId;
 
   @JsonKey(required: true, name: 'create_time')
   final int createTimeGMT;
@@ -23,7 +23,7 @@ class ApplicationCreationInfo implements Serializable<Map<String,dynamic>>{
   @override
   Map<String, dynamic> toJson() => serialize(null);
   
-  const ApplicationCreationInfo(this.createdByUsername, this.createTimeGMT, [this.createIPAddress]);
+  const ApplicationCreationInfo(this.createdByUserUniqueId, this.createTimeGMT, [this.createIPAddress]);
   factory ApplicationCreationInfo.fromMap(Map<String,dynamic> map) => _$ApplicationCreationInfoFromJson(map);
   static ApplicationCreationInfo fromJson(Map<String,dynamic> json) => ApplicationCreationInfo.fromMap(json);
 }
@@ -31,10 +31,10 @@ class ApplicationCreationInfo implements Serializable<Map<String,dynamic>>{
 @JsonSerializable()
 class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'owner')
-  String ownerUsername;
+  String ownerUserUniqueID;
   
   @JsonKey(required: true, name: 'admin_list')
-  List<String> adminListUsernames;
+  List<String> adminListUniqueIds;
 
   @override
   Map<String,dynamic> serialize([String? locale]) => _$ApplicationManagementInfoToJson(this);
@@ -42,7 +42,7 @@ class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
   @override
   Map<String,dynamic> toJson() => serialize(null);
 
-  ApplicationManagementInfo(this.ownerUsername, this.adminListUsernames);
+  ApplicationManagementInfo(this.ownerUserUniqueID, this.adminListUniqueIds);
   factory ApplicationManagementInfo.fromMap(Map<String,dynamic> map)  => _$ApplicationManagementInfoFromJson(map);
   static ApplicationManagementInfo fromJson(Map<String,dynamic> json) => ApplicationManagementInfo.fromMap(json);
   static ApplicationManagementInfo? fromJsonNullable(Map<String,dynamic>? json){
