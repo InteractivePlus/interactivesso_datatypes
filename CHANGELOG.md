@@ -1,10 +1,15 @@
-## 0.0.7
+## 0.0.9
 
-- Bugfix on OAuthToken that should have a OAuthPermission set by user setting.
+- Change APP Manager Lists from List&lt;String&gt; to Set&lt;String&gt;
 
 ## 0.0.8
 
 - Change Username in APPInfo into UserUids.
+
+
+## 0.0.7
+
+- Bugfix on OAuthToken that should have a OAuthPermission set by user setting.
 
 ## 0.0.6
 
