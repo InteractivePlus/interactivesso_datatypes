@@ -34,7 +34,7 @@ class ApplicationManagementInfo implements Serializable<Map<String,dynamic>>{
   String ownerUserUniqueID;
   
   @JsonKey(required: true, name: 'admin_list')
-  List<String> adminListUniqueIds;
+  Set<String> adminListUniqueIds;
 
   @override
   Map<String,dynamic> serialize([String? locale]) => _$ApplicationManagementInfoToJson(this);
