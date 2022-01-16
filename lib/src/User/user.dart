@@ -8,10 +8,8 @@ import '../Util/phone_number_serialization.dart';
 part 'user.g.dart';
 
 class AccountStatus implements Serializable<int>{
-  final bool canLogin;
-  final bool canModifyAccount;
-  final bool canViewManagingAPPs;
-  final bool canModifyManagingAPPs;
+  @JsonKey(name: 'permission_override')
+  final UserPermissionInfo permissionOverride;
   
   @override
   int serialize([String? locale]){
@@ -31,7 +29,7 @@ class AccountStatus implements Serializable<int>{
     return serialize(null);
   }
 
-  const AccountStatus._(this.canLogin, this.canModifyAccount, this.canViewManagingAPPs, this.canModifyManagingAPPs);
+  AccountStatus._(this.permissionOverride);
   factory AccountStatus.fromInt(int number){
     switch(number){
       case 0:
@@ -58,10 +56,50 @@ class AccountStatus implements Serializable<int>{
     }
   }
   
-  static const AccountStatus NORMAL = AccountStatus._(true, true, true, true);
-  static const AccountStatus NOT_VERIFIED = AccountStatus._(false, true, true, true);
-  static const AccountStatus POTENTIAL_ATTACK = AccountStatus._(true, false, false, false);
-  static const AccountStatus FROZEN = AccountStatus._(false, false, false, false);
+  static final AccountStatus NORMAL = AccountStatus._(UserPermissionInfo(
+    canCreateAPP: null,
+    canLogin: null,
+    canModifyAccount: null,
+    canModifyOwnedApps: null,
+    canViewManagingApps: null,
+    canManageNormalAPPs: null,
+    canManageNormalUsers: null,
+    canManageOtherAdmins: null,
+    canManageSpecialAPPs: null
+  ));
+  static final AccountStatus NOT_VERIFIED = AccountStatus._(UserPermissionInfo(
+    canCreateAPP: false,
+    canLogin: false,
+    canModifyAccount: false,
+    canModifyOwnedApps: false,
+    canViewManagingApps: false,
+    canManageNormalAPPs: false,
+    canManageNormalUsers: false,
+    canManageOtherAdmins: false,
+    canManageSpecialAPPs: false
+  ));
+  static final AccountStatus POTENTIAL_ATTACK = AccountStatus._(UserPermissionInfo(
+    canCreateAPP: false,
+    canLogin: null,
+    canModifyAccount: false,
+    canModifyOwnedApps: false,
+    canViewManagingApps: false,
+    canManageNormalAPPs: false,
+    canManageNormalUsers: false,
+    canManageOtherAdmins: false,
+    canManageSpecialAPPs: false
+  ));
+  static final AccountStatus FROZEN = AccountStatus._(UserPermissionInfo(
+    canCreateAPP: false,
+    canLogin: false,
+    canModifyAccount: false,
+    canModifyOwnedApps: false,
+    canViewManagingApps: false,
+    canManageNormalAPPs: false,
+    canManageNormalUsers: false,
+    canManageOtherAdmins: false,
+    canManageSpecialAPPs: false
+  ));
 }
 
 @JsonSerializable()
@@ -158,7 +196,7 @@ class UserInfo implements Serializable<Map<String,dynamic>>{
     required this.accountCreateInfo,
     required this.permissionOverride,
     this.passwordHash,
-    this.accountStatus = AccountStatus.NORMAL, 
+    required this.accountStatus, 
     this.emailVerified = false,
     this.phoneVerified = false,
     this.nickname,

@@ -1,3 +1,7 @@
+## 0.0.11
+
+- Code Review and minor structure fix.
+
 ## 0.0.10
 
 - Change Setting Object Merge.

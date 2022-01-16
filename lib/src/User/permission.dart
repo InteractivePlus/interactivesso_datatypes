@@ -5,8 +5,20 @@ part 'permission.g.dart';
 
 @JsonSerializable()
 class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
-  @JsonKey(name: 'can_own_app')
-  bool? canOwnAPP;
+  @JsonKey(name: 'can_login')
+  bool? canLogin;
+
+  @JsonKey(name: 'can_modify_account')
+  bool? canModifyAccount;
+
+  @JsonKey(name: 'can_view_managing_apps')
+  bool? canViewManagingApps;
+
+  @JsonKey(name: 'can_edit_owned_apps')
+  bool? canModifyOwnedApps;
+
+  @JsonKey(name: 'can_create_app')
+  bool? canCreateAPP;
 
   @JsonKey(name:"can_manage_normal_users")
   bool? canManageNormalUsers;
@@ -25,35 +37,47 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
 
   bool get isEmpty {
     return (
-      canOwnAPP == null 
+      canCreateAPP == null 
       && canManageNormalAPPs == null
       && canManageSpecialAPPs == null
       && canManageNormalUsers == null
       && canManageOtherAdmins == null
       && maxOwnedAPPs == null
+      && canModifyOwnedApps == null
+      && canViewManagingApps == null
+      && canModifyAccount == null
+      && canLogin == null
     );
   }
 
   /// Returns true is all fields has been set to non-null
   bool get isConcrete{
     return (
-      canOwnAPP != null 
+      canCreateAPP != null 
       && canManageNormalAPPs != null
       && canManageSpecialAPPs != null
       && canManageNormalUsers != null
       && canManageOtherAdmins != null
       && maxOwnedAPPs != null
+      && canModifyOwnedApps != null
+      && canViewManagingApps != null
+      && canModifyAccount != null
+      && canLogin != null
     );
   }
 
-  UserPermissionInfo({this.canOwnAPP,this.canManageNormalUsers, this.canManageOtherAdmins, this.canManageNormalAPPs, this.canManageSpecialAPPs, this.maxOwnedAPPs});
+  UserPermissionInfo({this.canCreateAPP,this.canManageNormalUsers, this.canManageOtherAdmins, this.canManageNormalAPPs, this.canManageSpecialAPPs, this.maxOwnedAPPs, this.canLogin, this.canModifyAccount, this.canModifyOwnedApps, this.canViewManagingApps});
   UserPermissionInfo.copy(UserPermissionInfo other){
-    canOwnAPP = other.canOwnAPP;
+    canCreateAPP = other.canCreateAPP;
     canManageNormalUsers = other.canManageNormalUsers;
     canManageOtherAdmins = other.canManageOtherAdmins;
     canManageNormalAPPs = other.canManageNormalAPPs;
     canManageSpecialAPPs = other.canManageSpecialAPPs;
     maxOwnedAPPs = other.maxOwnedAPPs;
+    canModifyOwnedApps = other.canModifyOwnedApps;
+    canViewManagingApps = other.canViewManagingApps;
+    canModifyAccount = other.canModifyAccount;
+    canLogin = other.canLogin;
   }
   factory UserPermissionInfo.fromMap(Map<String,dynamic> map) => _$UserPermissionInfoFromJson(map);
   static UserPermissionInfo fromJson(Map<String,dynamic> json) => UserPermissionInfo.fromMap(json);
@@ -92,11 +116,15 @@ class UserPermissionInfo implements Serializable<Map<String,dynamic>>{
   }
 
   static void _combinePermissionInfoMutable(UserPermissionInfo mutable,UserPermissionInfo other){
-    mutable.canOwnAPP ??= other.canOwnAPP;
+    mutable.canCreateAPP ??= other.canCreateAPP;
     mutable.canManageNormalUsers ??= other.canManageNormalUsers;
     mutable.canManageOtherAdmins ??= other.canManageOtherAdmins;
     mutable.canManageNormalAPPs ??= other.canManageNormalAPPs;
     mutable.canManageSpecialAPPs ??= other.canManageSpecialAPPs;
     mutable.maxOwnedAPPs ??= other.maxOwnedAPPs;
+    mutable.canModifyOwnedApps ??= other.canModifyOwnedApps;
+    mutable.canViewManagingApps ??= other.canViewManagingApps;
+    mutable.canModifyAccount ??= other.canModifyAccount;
+    mutable.canLogin ??= other.canLogin;
   }
 }

@@ -3,9 +3,7 @@ import 'package:interactiveplus_shared_dart/interactiveplus_shared_dart.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../Common/expirableinfo.dart';
-import 'scope.dart';
 import 'exchangemethod.dart';
-
 
 part 'authcode.g.dart';
 
@@ -22,9 +20,6 @@ class AuthorizationCode implements Serializable<Map<String,dynamic>>{
 
   @JsonKey(required: true, name: 'client_id')
   String appClientId;
-
-  @JsonKey(required: true, name: 'oauth_setting')
-  OAuthPermissionInfo authorizedOAuthSetting;
 
   @JsonKey(required: true, name: 'time_info')
   ExpirableInfo expirableInfo;
@@ -48,7 +43,6 @@ class AuthorizationCode implements Serializable<Map<String,dynamic>>{
     required this.challengeType, 
     required String? challenge, 
     required this.appClientId, 
-    required this.authorizedOAuthSetting, 
     required this.expirableInfo, 
     required this.userUniqueId, 
     required this.exchangeMethod}

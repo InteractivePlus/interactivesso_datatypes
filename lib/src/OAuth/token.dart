@@ -31,14 +31,8 @@ class OAuthToken implements Serializable<Map<String,dynamic>>{
   @JsonKey(required: true, name: 'client_id')
   String appClientId;
 
-  @JsonKey(name: 'custom_role')
-  int? customRole;
-
   @JsonKey(required: true, name: 'valid')
   bool valid;
-
-  @JsonKey(required: true, name: 'oauth_setting')
-  OAuthPermissionInfo authorizedOAuthSetting;
 
   @override
   Map<String,dynamic> serialize([String? locale]) => _$OAuthTokenToJson(this);
@@ -54,8 +48,6 @@ class OAuthToken implements Serializable<Map<String,dynamic>>{
     required this.accessTokenExpires,
     required this.refreshTokenExpires,
     required this.exchangeMethod,
-    required this.authorizedOAuthSetting,
-    this.customRole,
     required this.valid
   });
   factory OAuthToken.fromMap(Map<String,dynamic> map) => _$OAuthTokenFromJson(map);

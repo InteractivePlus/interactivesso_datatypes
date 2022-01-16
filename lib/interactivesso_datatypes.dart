@@ -18,6 +18,7 @@ export 'src/OAuth/exchangemethod.dart';
 export 'src/OAuth/scope.dart';
 export 'src/OAuth/token.dart';
 export 'src/OAuth/vericode.dart';
+export 'src/OAuth/useroauthauthorization.dart';
 
 export 'src/User/permission.dart';
 export 'src/User/token.dart';
