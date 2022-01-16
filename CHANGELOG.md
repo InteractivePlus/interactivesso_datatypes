@@ -1,3 +1,7 @@
+## 0.0.10
+
+- Change Setting Object Merge.
+
 ## 0.0.9
 
 - Change APP Manager Lists from List&lt;String&gt; to Set&lt;String&gt;

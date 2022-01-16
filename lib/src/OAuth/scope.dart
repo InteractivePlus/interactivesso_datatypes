@@ -63,7 +63,7 @@ abstract class OAuthSingleScopePermission{
   }
 
   void settingMergePermission(OAuthSingleScopePermission permission){
-    enabled = PermissionUtil.mergeItemIfBothNonNull(enabled, permission.enabled, PermissionUtil.mergeItemAnd);
+    enabled = PermissionUtil.mergeItemIfRightNonNull(enabled, false, permission.enabled, PermissionUtil.mergeItemAnd);
   }
 
   void forceConcrete(){
@@ -119,8 +119,8 @@ class OAuthNotificationScopePermission extends OAuthSingleScopePermission implem
   @override
   void settingMergePermission(covariant OAuthNotificationScopePermission permission) {
     super.settingMergePermission(permission);
-    maxNumberPerUserPerDay = PermissionUtil.mergeItemIfBothNonNull(maxNumberPerUserPerDay, permission.maxNumberPerUserPerDay, PermissionUtil.mergeItemMin);
-    maxNumberPerUserPerMonth = PermissionUtil.mergeItemIfBothNonNull(maxNumberPerUserPerDay, permission.maxNumberPerUserPerDay, PermissionUtil.mergeItemMin);
+    maxNumberPerUserPerDay = PermissionUtil.mergeItemCloseToRight(maxNumberPerUserPerDay, permission.maxNumberPerUserPerDay, PermissionUtil.mergeItemMin);
+    maxNumberPerUserPerMonth = PermissionUtil.mergeItemCloseToRight(maxNumberPerUserPerDay, permission.maxNumberPerUserPerDay, PermissionUtil.mergeItemMin);
     maxNumberPerUserPerDay = permission.maxNumberPerUserPerMonth;
   }
 
@@ -195,8 +195,8 @@ class OAuthListManagedAppsScopePermission extends OAuthSingleScopePermission imp
   @override
   void settingMergePermission(covariant OAuthListManagedAppsScopePermission permission) {
     super.settingMergePermission(permission);
-    readAPPSecret = PermissionUtil.mergeItemIfBothNonNull(readAPPSecret, permission.readAPPSecret, PermissionUtil.mergeItemAnd);
-    readAPPDisplayNameAndDescription = PermissionUtil.mergeItemIfBothNonNull(readAPPDisplayNameAndDescription, permission.readAPPDisplayNameAndDescription, PermissionUtil.mergeItemAnd);
+    readAPPSecret = PermissionUtil.mergeItemCloseToRight(readAPPSecret, permission.readAPPSecret, PermissionUtil.mergeItemAnd);
+    readAPPDisplayNameAndDescription = PermissionUtil.mergeItemCloseToRight(readAPPDisplayNameAndDescription, permission.readAPPDisplayNameAndDescription, PermissionUtil.mergeItemAnd);
   }
 
   @override
